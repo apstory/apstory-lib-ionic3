@@ -1,6 +1,6 @@
 {
   "name": "apstorylogger-ionic3",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "main": "./dist/index.js",
   "typings": "./dist/index.d.ts",
   "files": [
@@ -14,7 +14,18 @@
     "type": "git",
     "url": "git+https://github.com/apstory/apstory-lib-ionic3"
   },
-  "keywords": ["angular", "applicationinsights-js", "application-insights", "angular-applicationinsights", "microsoft application insights javascript sdk", "typescript", "javascript-sdk"],
+  "keywords": [
+    "angular",
+    "applicationinsights-js",
+    "application-insights",
+    "angular-applicationinsights",
+    "microsoft application insights javascript sdk",
+    "typescript",
+    "javascript-sdk",
+    "microsoft",
+    "applicationinsights",
+    "angular applicationinsights"
+  ],
   "author": "Anthony Plews",
   "license": "MIT",
   "homepage": "http://www.apstory.co.za",
