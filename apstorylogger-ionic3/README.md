@@ -1,4 +1,4 @@
-[![Build status](https://apstory.visualstudio.com/ApStory/_apis/build/status/apstorymq-client-angular)](https://apstory.visualstudio.com/ApStory/_build/latest?definitionId=25)
+[![Build status](https://apstory.visualstudio.com/ApStory/_apis/build/status/apstorylogger-ionic3)](https://apstory.visualstudio.com/ApStory/_build/latest?definitionId=40)
 
 # Apstory Application Insights Logger
 
