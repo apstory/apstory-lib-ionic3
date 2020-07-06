@@ -3,7 +3,7 @@ import { ApstoryloggerService } from './providers/apstorylogger.service';
 
 @NgModule({
   declarations: [],
-  imports: [],
+  imports: [ApstoryloggerService],
   exports: []
 })
 export class ApstoryloggerModule {
