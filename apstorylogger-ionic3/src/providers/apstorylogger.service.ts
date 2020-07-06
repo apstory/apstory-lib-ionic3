@@ -1,47 +1,46 @@
 import { Injectable, Inject } from '@angular/core';
-import { AppInsights } from 'applicationinsights-js';
+import { ApplicationInsights } from '@microsoft/applicationinsights-web';
 import { LoggerSeverityEnum } from './enum/apstory-logger-severity-enum';
 
 @Injectable()
 export class ApstoryloggerService {
 
-  private config: Microsoft.ApplicationInsights.IConfig = {
-    instrumentationKey: this.instrumentationKey
-  };
-
-  constructor(@Inject('instrumentationKey') private instrumentationKey: string) {
-    if (!AppInsights.config) {
-      AppInsights.downloadAndSetup(this.config);
+  private appInsights = new ApplicationInsights({
+    config: {
+      instrumentationKey: this.instrumentationKey,
+      loggingLevelConsole: this.loggingLevelConsole
     }
+  });
+
+  constructor(@Inject('instrumentationKey') private instrumentationKey: string,
+              @Inject('loggingLevelConsole') private loggingLevelConsole: number = 0) {
+    this.appInsights.loadAppInsights();
   }
 
-  logTrace(message: string, properties?: any, severityLevel?: any) {
-    console.log('logTrace: ' + message + ', severityLevel: ' + LoggerSeverityEnum.Informational);
-    AppInsights.trackTrace(message, properties, severityLevel);
+  logTrace(message: string, properties?: any, severityLevel?: any, measurements?: any) {
+    this.appInsights.trackTrace({ message, severityLevel, properties, measurements });
   }
 
   async logTraceSeverity(message: string, loggerSeverity: LoggerSeverityEnum) {
-    console.log('logTrace: ' + message + ', severityLevel: ' + LoggerSeverityEnum);
     this.logTrace(message, null, loggerSeverity);
   }
 
-  logPageView(name?: string, url?: string, measurements?: any, properties?: any, duration?: number) {
-    console.log('logPageView: ' + name + ', url: ' + url);
-    AppInsights.trackPageView(name, url, properties, measurements, duration);
+  logPageView(
+    name?: string, uri?: string, measurements?: any, properties?: any, duration?: number, isLoggedIn?: boolean,
+    pageType?: string
+  ) {
+    this.appInsights.trackPageView({ name, uri, measurements, properties, isLoggedIn, pageType });
     this.logEvent(name, 'Initialize page');
     this.logTrace(name);
   }
 
   logEvent(name: string, properties?: any, measurements?: any) {
-    console.log('logEvent: ' + name);
-    AppInsights.trackEvent(name, properties, measurements);
+    this.appInsights.trackEvent({ name, properties, measurements });
     this.logTrace(name);
   }
 
-  logException(exception: Error, handledAt?: string, properties?: any, measurements?: any) {
-    console.log('logAppException: ' + exception.name + ', message: ' + exception.message + ', stackTrace: ' + exception.stack);
-    AppInsights.trackException(exception, handledAt, properties, measurements);
-    this.logTrace(name, null, LoggerSeverityEnum.Error);
+  logException(exception: Error, handledAt?: string, properties?: any, measurements?: any, severityLevel?: any, id?: string) {
+    this.appInsights.trackException({ exception, properties, measurements, severityLevel, id });
   }
 
 }

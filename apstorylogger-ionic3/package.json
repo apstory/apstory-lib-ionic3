@@ -1,6 +1,6 @@
 {
   "name": "apstorylogger-ionic3",
-  "version": "1.0.6",
+  "version": "5.0.0",
   "main": "./dist/index.js",
   "typings": "./dist/index.d.ts",
   "files": [
@@ -37,11 +37,13 @@
     "@angular/forms": "^8.2.6",
     "@angular/platform-browser": "8.2.6",
     "@angular/platform-browser-dynamic": "8.2.6",
-    "@types/applicationinsights-js": "^1.0.9",
     "@types/node": "^12.7.5",
     "ionic-angular": "3.9.8",
     "rxjs": "6.5.3",
     "typescript": "3.5.3",
     "zone.js": "0.10.2"
+  },
+  "dependencies": {
+    "@microsoft/applicationinsights-web": "^2.5.5"
   }
 }
