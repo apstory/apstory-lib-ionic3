@@ -1,10 +1,10 @@
 {
   "name": "apstorylogger-ionic3",
-  "version": "5.0.2",
+  "version": "5.0.3",
   "main": "./dist/index.js",
   "typings": "./dist/index.d.ts",
   "files": [
-    "dist"
+    "dist/**"
   ],
   "scripts": {
     "ngc": "ngc",
